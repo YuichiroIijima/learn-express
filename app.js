@@ -23,3 +23,11 @@ const photoList = [
 app.get("/api/photo/list", function(req, res, next) {
   res.json(photoList);
 });
+
+app.get("/api/photo/list/:photoId", function(req, res, next) {
+  const matchPhoto = photoList.filter(photo => {
+    photo.id === req.params.photoId;
+  });
+  let photo = matchPhoto;
+  res.json(photo);
+});
