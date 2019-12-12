@@ -24,10 +24,12 @@ app.get("/api/photo/list", function(req, res, next) {
   res.json(photoList);
 });
 
-app.get("/api/photo/list/:photoId", function(req, res, next) {
-  const matchPhoto = photoList.filter(photo => {
-    photo.id === req.params.photoId;
+app.get("/api/photo/:photoId", function(req, res, next) {
+  let photo;
+  photoList.forEach(p => {
+    if (p.id === req.params.photoId) {
+      photo = p;
+    }
   });
-  let photo = matchPhoto;
   res.json(photo);
 });
